@@ -8,10 +8,8 @@ import javax.persistence.Table;
 @Table(name="roles")
 public class Roles extends BaseEntity{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
 	@Column(name="user_role", length=100, nullable=false,unique=true)
 	private String role;
 

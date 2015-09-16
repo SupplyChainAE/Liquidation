@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -38,9 +39,11 @@ public class User extends BaseEntity implements UserDetails{
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Roles> userRoles;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
-	private List<Shipper> shippers;
+	@ManyToOne
+	private Liquidation activeLiquidation;
+	
+	@ManyToMany(fetch=FetchType.LAZY)
+	private List<Liquidation> liquidationList;
 	
 	public List<Roles> getUserRoles() {
 		return userRoles;
@@ -103,11 +106,21 @@ public class User extends BaseEntity implements UserDetails{
 		return true;
 	}
 
-	public void setShippers(List<Shipper> shippers) {
-		this.shippers = shippers;
+	public Liquidation getActiveLiquidation() {
+		return activeLiquidation;
 	}
 
-	public List<Shipper> getShippers() {
-		return shippers;
+	public void setActiveLiquidation(Liquidation activeLiquidation) {
+		this.activeLiquidation = activeLiquidation;
 	}
+
+	public List<Liquidation> getLiquidationList() {
+		return liquidationList;
+	}
+
+	public void setLiquidationList(List<Liquidation> liquidationList) {
+		this.liquidationList = liquidationList;
+	}
+
+	
 }

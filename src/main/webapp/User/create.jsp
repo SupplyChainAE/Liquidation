@@ -6,7 +6,6 @@
 <script>
 	$(document).ready(function() {
 		$('#usercreate').addClass("active");
-		$(".select2").select2();
 	});
 </script>
 
@@ -40,9 +39,9 @@
                     </div>
                     
                     <div class="form-group ">
-                    <div class="select2-container select2-container-multi">
                     <label>Roles</label>
-                    <select name="role" multiple="multiple" class="form-control select2">
+                     <div class="chosen-container-multi chosen-container">
+                    <select name="role" multiple="multiple" class="form-control required" data-rel="chosen">
                       <c:forEach var="roles" items="${roles}">
                       <option value="${roles.id}">${roles.role}</option>
                       </c:forEach>
@@ -51,13 +50,15 @@
                   </div>
                   
                   <div class="form-group ">
-                    <div class="select2-container select2-container-multi">
-                    <label>Shippers</label>
-                    <select name="shipper" multiple="multiple" class="form-control select2" >
-                     <c:forEach var="shipper" items="${shippers}">
-                      <option value="${shipper.id}">${shipper.courier}</option>
+                    <div class="col-xs-6">
+                    <label >Liquidation Centers</label>
+                    <div class="chosen-container-multi chosen-container">
+                    <select name="liquidation" multiple="multiple" class="form-control required" data-rel="chosen" >
+                     <c:forEach var="liq" items="${liquidation}">
+                      <option value="${liq.id}">${liq.name}</option>
                       </c:forEach>
                     </select>
+                    </div>
                   	</div>
              	 </div>
              	 

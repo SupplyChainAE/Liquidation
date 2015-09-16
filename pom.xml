@@ -1,11 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.snapdeal.tpl</groupId>
-	<artifactId>3PL</artifactId>
+	<groupId>com.snapdeal.lms</groupId>
+	<artifactId>LMS</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>3PL Maven Webapp</name>
+	<name>Liquidation Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
 		<dependency>
@@ -208,7 +208,7 @@
 
 	</dependencies>
 	<build>
-		<finalName>3PL</finalName>
+		<finalName>Liquidation</finalName>
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
@@ -242,11 +242,11 @@
 				<version>6.1.24</version>
 				<configuration>
 					<stopPort>9966</stopPort>
-					<stopKey>3PL</stopKey>
+					<stopKey>LMS</stopKey>
 					<scanIntervalSeconds>0</scanIntervalSeconds>
 
 					<webAppConfig>
-						<contextPath>/3PL</contextPath>
+						<contextPath>/LMS</contextPath>
 						<baseResource implementation="org.mortbay.resource.ResourceCollection">
 
 							<resourcesAsCSV>src/main/webapp,${project.build.directory}/classes</resourcesAsCSV>

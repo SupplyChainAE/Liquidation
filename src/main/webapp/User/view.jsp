@@ -39,7 +39,7 @@ $("#userTable").DataTable({
                       <tr>
                         <th>UserName</th>
                         <th>Role</th>
-                        <th>Shippers</th>
+                        <th>Liquidation Centres</th>
                         <th>Actions</th>
                       </tr>
                     </thead>
@@ -51,8 +51,8 @@ $("#userTable").DataTable({
                         	${roles.role}<br>
                         	</c:forEach></td>
                         <td>
-                        <c:forEach var="shipper" items="${item.shippers}">
-                        	${shipper.courier}<br>
+                        <c:forEach var="liq" items="${item.liquidationList}">
+                        	${liq.name}<br>
                         </c:forEach>
                         </td>
                         <td>

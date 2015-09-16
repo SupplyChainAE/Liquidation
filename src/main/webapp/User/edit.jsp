@@ -6,7 +6,6 @@
 <script>
 	$(document).ready(function() {
 		$('#useredit').addClass("active");
-		$(".select2").select2();
 	});
 </script>
 
@@ -29,18 +28,19 @@
                   <div class="col-xs-6">
                   	<div class="box-body">
                     <input type="hidden" name="id" value="${user.id}">
-                    <input type="hidden" name="password" value="${user.password}">
+                    <input type="hidden" name="password"
+										value="${user.password}">
                     <div class="form-group">
                       <label for="userName">User Name</label>
-                      <input class="form-control" name="userName"
-											id="userName" placeholder="Enter Username"
+                      <input class="form-control" name="userName" id="userName" placeholder="Enter Username"
 											value="${user.userName}">
                     </div>
           
                                 
                     
                     <div class="form-group ">
-                    <div class="select2-container select2-container-multi">
+                    <div
+											class="select2-container select2-container-multi">
                     <label>Roles</label>
                     <select name="role" multiple="multiple"
 												class="form-control select2">
@@ -62,21 +62,19 @@
                   </div>
                   
                   <div class="form-group ">
-                    <div
-											class="select2-container select2-container-multi">
-                    <label>Shippers</label>
-                    <select name="shipper" multiple="multiple"
-												class="form-control select2">
-                     <c:forEach var="shipper" items="${shippers}">
-							<c:forEach var="savedShipper" items="${user.shippers}">
+                    <label>Liquidation Centres</label>
+                    <div  class="chosen-container-multi chosen-container">
+                    <select name="liquidation" multiple="multiple" class="form-control required" data-rel="chosen">
+                     <c:forEach var="liq" items="${liquidation}">
+							<c:forEach var="savedLiq" items="${user.liquidationList}">
 									<c:set var="found" value="false" />
-									<c:if test="${shipper.id eq savedShipper.id}">
-										<option value="${shipper.id}" selected="selected">${shipper.courier}</option>
+									<c:if test="${liq.id eq savedLiq.id}">
+										<option value="${liq.id}" selected="selected">${liq.name}</option>
 									<c:set var="found" value="true" />
 									</c:if>
 								</c:forEach>
 			                      <c:if test="${not found}">
-									<option value="${shipper.id}">${shipper.courier}</option>
+									<option value="${liq.id}">${liq.name}</option>
 								  </c:if>
                       </c:forEach>
                     </select>

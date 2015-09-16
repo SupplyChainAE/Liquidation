@@ -15,8 +15,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.snapdeal.entity.Liquidation;
 import com.snapdeal.entity.Roles;
-import com.snapdeal.entity.Shipper;
+import com.snapdeal.entity.Liquidation;
 import com.snapdeal.entity.User;
 import com.snapdeal.service.UserService;
 
@@ -30,7 +31,7 @@ public class UserController {
 
 	@RequestMapping("/create")
 	public String createUser(ModelMap map) {
-		List<Shipper> shipperList = userService.getAllShippers();
+		List<Liquidation> shipperList = userService.getAllLiquidations();
 		List<Roles> roleList = userService.getAllRoles();
 
 		map.put("shippers", shipperList);
@@ -44,7 +45,7 @@ public class UserController {
 				@RequestParam("shipper") Long[] shippers,ModelMap map) {
 		System.out.println(user.getUsername());
 		List<Roles> finalRoles = new ArrayList<Roles>();
-		List<Shipper> finalShippers = new ArrayList<Shipper>();
+		List<Liquidation> finalLiquidations = new ArrayList<Liquidation>();
 		
 		for(Long roleId : roles)
 		{
@@ -54,14 +55,14 @@ public class UserController {
 		}
 		for(Long shipperId : shippers)
 		{
-			Shipper sh = new Shipper();
+			Liquidation sh = new Liquidation();
 			sh.setId(shipperId);
-			finalShippers.add(sh);
+			finalLiquidations.add(sh);
 		} 
 		if(user.getId() == null)
 		{
 			user.setUserRoles(finalRoles);
-			user.setShippers(finalShippers);
+			user.setLiquidation(finalLiquidations);
 			userService.saveOrUpdateUser(user);
 		}
 		else
@@ -69,7 +70,7 @@ public class UserController {
 			 User persistedUser = userService.findUserById(user.getId());
 			 persistedUser.setUserName(user.getUsername());
 			 persistedUser.setUserRoles(finalRoles);
-			 persistedUser.setShippers(finalShippers);
+			 persistedUser.setLiquidation(finalLiquidations);
 			
 			 userService.saveOrUpdateUser(persistedUser);
 		 }
@@ -92,7 +93,7 @@ public class UserController {
 	@RequestMapping("/edit/{id}")
 	public String editUser(@PathVariable("id") Long id, ModelMap map) {
 		User persistedUser = userService.findUserById(id);
-		List<Shipper> shipperList = userService.getAllShippers();
+		List<Liquidation> shipperList = userService.getAllLiquidations();
 		List<Roles> roleList = userService.getAllRoles();
 
 		map.put("shippers", shipperList);

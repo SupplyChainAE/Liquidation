@@ -3,14 +3,14 @@
 <body class="login-page">
 	<div class="login-box">
 		<div class="login-logo">
-			<a href="../../index2.html"><b>3PL</b> Dashboard</a>
+			<a href="../../index2.html"><b>Liquidation</b> Center System</a>
 		</div>
 		<!-- /.login-logo -->
 		<div class="login-box-body">
 			<p class="login-box-msg">Sign in to start your session</p>
 			<form action="<c:url value="/j_spring_security_check"/>" method="post">
 				<div class="form-group has-feedback">
-					<input id="username" name="username" type="text" class="form-control" placeholder="Email"/><span
+					<input id="username" name="username" type="text" class="form-control" placeholder="Username"/><span
 						class="glyphicon glyphicon-envelope form-control-feedback"></span>
 				</div>
 				<div class="form-group has-feedback">

@@ -7,7 +7,6 @@
 <link href="<c:url value="/css/AdminLTE.css"/>" rel="stylesheet">
 <link href="<c:url value="/css/skin-blue-light.css"/>" rel="stylesheet">
 <link href="<c:url value="/css/dataTables.bootstrap.css"/>" rel="stylesheet" />
-<link href="<c:url value="/css/select2.min.css"/>" rel="stylesheet" />
 <link href="<c:url value="/css/chosen.css"/>" rel="stylesheet" />
 <link href="<c:url value="/css/bootstrap3-wysihtml5.css"/>" rel="stylesheet" type="text/css" />
 <link href="<c:url value="/css/daterangepicker-bs3.css"/>" rel="stylesheet" />
@@ -22,14 +21,14 @@
 <script src=<c:url value="/js/jquery-ui.js"/> ></script>
 <script src="<c:url value="/js/bootstrap.js"/>"></script>
 <script src=<c:url value="/js/app.js"/> ></script>
+<script src="<c:url value="/js/form-elements.js"/>"></script>
 <script src="<c:url value="/js/jquery.dataTables.js"/>"></script>
 <script src="<c:url value="/js/dataTables.bootstrap.js"/>"></script>
-<script src="<c:url value="/js/select2.full.js"/>"></script>
 <script src='<c:url value="/js/moment.min.js"/>'></script>
 <script src='<c:url value="/js/daterangepicker.js"/>'></script>
 
 <script src="<c:url value="/js/jquery.noty.js"/>"></script>
-<script src="<c:url value="/js/form-elements.js"/>"></script>
+
 <script src="<c:url value="/js/jquery.chosen.min.js"/>"></script>
 <script src='<c:url value="/js/dataTables.buttons.min.js"/>'></script>
 <script src='<c:url value="/js/buttons.flash.min.js"/>'></script>
