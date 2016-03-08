@@ -17,6 +17,9 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 @MappedSuperclass
@@ -39,10 +42,14 @@ public abstract class BaseEntity implements Serializable{
 	@Column(name = "updated", nullable = false,updatable=true)
 	private Date updated;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@JsonIgnore
+	@ManyToOne(fetch=FetchType.EAGER)
+	@Fetch(value=FetchMode.JOIN)
 	private User createdBy;
 	
-	@ManyToOne(fetch=FetchType.LAZY)
+	@JsonIgnore
+	@ManyToOne(fetch=FetchType.EAGER)
+	@Fetch(value=FetchMode.JOIN)
 	private User updatedBy;
 	
 	public User getCreatedBy() {

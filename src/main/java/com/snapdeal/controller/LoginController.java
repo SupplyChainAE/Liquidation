@@ -16,6 +16,7 @@ public class LoginController {
 	public String login(@RequestParam(required=false) String authFailed, ModelMap map) {
 		String message = "";
 		String page = "";
+		
 		if(authFailed != null){
 			message = "Invalid Username or Password. Please try again.";
 			page="login";
@@ -25,7 +26,9 @@ public class LoginController {
 				SecurityContextHolder.getContext().getAuthentication().isAuthenticated())
 		{
 			Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+			System.out.println("principal_:");
 			if (principal instanceof UserDetails) {
+				System.out.println("entered:");
 				page="redirect:/home";  
 			} 
 			else {
@@ -52,9 +55,12 @@ public class LoginController {
 	{
 		return "redirect:/home";
 	}
+
 	@RequestMapping("/home")
-	public String getHome()
+	public String getHome(@RequestParam(value="message",required=false) String message,ModelMap map)
 	{
+		if(message != null)
+			map.put("message", message);
 		return "home";
 	}
 }

@@ -19,6 +19,12 @@ public class Liquidation extends BaseEntity {
 	@Column(name="code")
 	private String code;
 	
+	@Column(name="lot_size")
+	private Long lotSize;
+
+	@Column(name="enabled")
+	private boolean enabled;
+
 	public String getName() {
 		return name;
 	}
@@ -33,6 +39,22 @@ public class Liquidation extends BaseEntity {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setLotSize(Long lotSize) {
+		this.lotSize = lotSize;
+	}
+
+	public Long getLotSize() {
+		return lotSize;
 	}
 	
 }

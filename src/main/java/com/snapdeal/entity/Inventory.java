@@ -2,7 +2,14 @@ package com.snapdeal.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name="inventory")
@@ -34,11 +41,9 @@ public class Inventory extends BaseEntity {
 	@Column(name="product_name",length=2048)
 	private String productName;
 
-	@Column(name="qc_remarks")
-	private String qcRemarks;
-	
-	@Column(name="shipping_mode")
-	private String shippingMode;
+	@ManyToOne(fetch=FetchType.EAGER)
+	@Fetch(value=FetchMode.SELECT)
+	private Liquidation liquidation;
 	
 	@Column(name="rms_center")
 	private String rmsCenter;
@@ -52,7 +57,7 @@ public class Inventory extends BaseEntity {
 	@Column(name="weight")
 	private String weight;
 
-	@Column(name="suborder_code")
+	@Column(name="subcategory")
 	private String subCategory;
 
 	@Column(name="suborder_code")
@@ -60,6 +65,35 @@ public class Inventory extends BaseEntity {
 	
 	@Column(name="order_code")
 	private String orderCode;
+	
+	@Column(name="issue_category")
+	private String issueCategory;
+	
+	@Column(name="fulfillment_model")
+	private String fulfillmentModel;
+	
+	@Column(name="liquidaon_category")
+	private String liqCategory;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	private Lot lot;
+	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@Cascade(CascadeType.ALL)
+	@Fetch(value=FetchMode.JOIN)
+	private BuyerDetails buyer;
+	
+	@Column(name="remarks",length=1000)
+	private String remarks;
+	
+	public String getIssueCategory() {
+		return issueCategory;
+	}
+
+	public void setIssueCategory(String issueCategory) {
+		this.issueCategory = issueCategory;
+	}
+	
 
 	public String getBarcode() {
 		return barcode;
@@ -125,22 +159,6 @@ public class Inventory extends BaseEntity {
 		this.productName = productName;
 	}
 
-	public String getQcRemarks() {
-		return qcRemarks;
-	}
-
-	public void setQcRemarks(String qcRemarks) {
-		this.qcRemarks = qcRemarks;
-	}
-
-	public String getShippingMode() {
-		return shippingMode;
-	}
-
-	public void setShippingMode(String shippingMode) {
-		this.shippingMode = shippingMode;
-	}
-
 	public String getRmsCenter() {
 		return rmsCenter;
 	}
@@ -197,4 +215,51 @@ public class Inventory extends BaseEntity {
 		this.orderCode = orderCode;
 	}
 
+	public Liquidation getLiquidation() {
+		return liquidation;
+	}
+
+	public void setLiquidation(Liquidation liquidation) {
+		this.liquidation = liquidation;
+	}
+
+	public void setLot(Lot lot) {
+		this.lot = lot;
+	}
+
+	public Lot getLot() {
+		return lot;
+	}
+
+	public void setBuyer(BuyerDetails buyer) {
+		this.buyer = buyer;
+	}
+
+	public BuyerDetails getBuyer() {
+		return buyer;
+	}
+
+	public void setFulfillmentModel(String fulfillmentModel) {
+		this.fulfillmentModel = fulfillmentModel;
+	}
+
+	public String getFulfillmentModel() {
+		return fulfillmentModel;
+	}
+
+	public void setLiqCategory(String liqCategory) {
+		this.liqCategory = liqCategory;
+	}
+
+	public String getLiqCategory() {
+		return liqCategory;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
 }

@@ -11,8 +11,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.snapdeal.dao.EntityDao;
+import com.snapdeal.entity.Liquidation;
 import com.snapdeal.entity.Roles;
-import com.snapdeal.entity.Shipper;
 import com.snapdeal.entity.User;
 
 @Transactional
@@ -60,10 +60,16 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
-	public List<Shipper> getAllShippers() {
-		List<Shipper> shippers = entityDao.findAll(Shipper.class);
-		return shippers;
+	public List<Liquidation> getAllLiquidations() {
+		List<Liquidation> liquidationList = entityDao.findAll(Liquidation.class);
+		return liquidationList;
 	}
+	
+//	@Override
+//	public List<Shipper> getAllShippers() {
+//		List<Shipper> shippers = entityDao.findAll(Shipper.class);
+//		return shippers;
+//	}
 	
 	@Override
 	public void saveOrUpdateRole(Roles role) {

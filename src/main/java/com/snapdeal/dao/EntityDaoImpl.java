@@ -13,7 +13,6 @@ import com.snapdeal.entity.BaseEntity;
 
 
 @Named("entityDao")
-@Transactional
 public class EntityDaoImpl implements EntityDao {
 	
 	@PersistenceContext
@@ -35,6 +34,7 @@ public class EntityDaoImpl implements EntityDao {
 	}
 
 	@Override
+	@Transactional
 	public <T extends BaseEntity> void saveOrUpdate(T object) {
 		if(object.getId() != null)
 		{	

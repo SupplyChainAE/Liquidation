@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.springframework.security.core.GrantedAuthority;
@@ -39,10 +40,12 @@ public class User extends BaseEntity implements UserDetails{
 	@ManyToMany(fetch = FetchType.EAGER)
 	private List<Roles> userRoles;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	private Liquidation activeLiquidation;
 	
-	@ManyToMany(fetch=FetchType.LAZY)
+	@ManyToMany(fetch=FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	@JsonIgnore
 	private List<Liquidation> liquidationList;
 	
 	public List<Roles> getUserRoles() {
@@ -114,13 +117,13 @@ public class User extends BaseEntity implements UserDetails{
 		this.activeLiquidation = activeLiquidation;
 	}
 
-	public List<Liquidation> getLiquidationList() {
-		return liquidationList;
-	}
-
 	public void setLiquidationList(List<Liquidation> liquidationList) {
 		this.liquidationList = liquidationList;
 	}
 
-	
+	public List<Liquidation> getLiquidationList() {
+		return liquidationList;
+	}
+
+		
 }
